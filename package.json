@@ -1,0 +1,19 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "FCC Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obinnaeye/image-search-api.git"
+  },
+  "author": "Nnenanya O.K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obinnaeye/image-search-api/issues"
+  },
+  "homepage": "https://github.com/obinnaeye/image-search-api#readme"
+}
