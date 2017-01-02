@@ -32,8 +32,9 @@ app.get("/", function(req, res){
                 sum +=ind;
                 arr.push(myjson);
             })
-            res.send(arr);
-            queryData(q);
+            //res.send(queryData.find(arr));
+            queryData.find(arr, res);
+            queryData.insert(q);
         } 
     });
     }
