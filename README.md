@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Image Search API Microservice</title>
-    <style type="text/css">
-        h2{
-            text-align: center;
-            color: red;
-        }
-        .container{
-            margin: 0 auto;
-            width: 90%;
-        }
-    </style>
-</head>
-
 <body>
     <h2>
         Image Search API-Microservice<br>
