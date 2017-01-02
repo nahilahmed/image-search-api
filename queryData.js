@@ -3,6 +3,7 @@ var MongoClient = require("mongodb").MongoClient;
 
 var queryData = {};
 
+// inserts a query to the database
 queryData.insert = function(q){
     MongoClient.connect(process.env.MONGODB_URI, function(err, db){
         if(err){throw err}
@@ -11,14 +12,14 @@ queryData.insert = function(q){
             collection.insert({time: String(new Date()), query: q}, function(err, doc){
                 if(err) console.log("Query data storage failed.");
                 console.log("Data inserted");
-            })
+            });
         }
         db.close();
-    })
-}
-var array = ["arr"];
+    });
+};
+
+// finds a query responds with the api in json format
 queryData.find = function(ar, response){
-    
  MongoClient.connect(process.env.MONGODB_URI, function(err, db){
         if(err){throw err}
         else{

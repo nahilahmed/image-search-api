@@ -21,7 +21,7 @@ app.get("/", function(req, res){
         if (!error && response.statusCode == 200){ 
             var arr = [];
             var items = JSON.parse(body).items;
-            var sum = 0;
+            
             items.forEach(function(item, ind){
                 var myjson = {
                     imgURL : item.link,
@@ -29,7 +29,6 @@ app.get("/", function(req, res){
                     thumbnail: item.image.thumbnailLink,
                     contextLink: item.image.contextLink
                 };
-                sum +=ind;
                 arr.push(myjson);
             })
             var arr2 = [{images: arr}];
