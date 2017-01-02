@@ -25,7 +25,7 @@
         <h4>
             Sample
         </h4>
-        <code>https://img-search-api-obinnaeye.c9users.io/?q=grace&offset=3</code><br>
+        <code>https://imageapi-king.herokuapp.com/?q=grace&offset=3</code><br>
         <p>
             <ul>
                 <li>
