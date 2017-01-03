@@ -15,8 +15,14 @@ app.get("/", function(req, res){
     var q = req.query.q;
     if (q){
         var start = req.query.offset || 0;
-    request.get("https://www.googleapis.com/customsearch/v1?key=" +
-    process.env.google_key + "&cx=" + process.env.google_cx + "&searchType=image&q=" + q + "&start=" + start, 
+        var url = "https://www.googleapis.com/customsearch/v1?key=" +
+    process.env.google_key + "&cx=" + process.env.google_cx + "&searchType=image&q=" + q + "&start=" + start;
+    request({
+        uri: url,
+        method: "GET",
+        timeout: 10000,
+        followRedirect: true,
+        maxRedirects: 10},
     function(error, response, body){
         if (!error && response.statusCode == 200){ 
             var arr = [];
@@ -31,9 +37,9 @@ app.get("/", function(req, res){
                 };
                 arr.push(myjson);
             })
-            //var arr2 = [{images: arr}];
-            res.send(arr);
-            //queryData.find(arr2, res);
+            var arr2 = [{images: arr}];
+            //res.send(arr);
+            queryData.find(arr2, res);
             queryData.insert(q);
         } 
     });

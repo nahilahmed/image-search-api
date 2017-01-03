@@ -35,7 +35,14 @@ queryData.find = function(ar, response){
                                 "recentQueries": result
                             };
                             ar.splice(0, 0, jsn);
-                            response.send(ar);
+                            count.then(function(val){
+                                    console.log(val);
+                                    var total = {
+                                        totalQueries: val
+                                    };
+                                    ar.splice(0,0, total);
+                                    response.send(ar);
+                                });
                             
                         }
                     });
