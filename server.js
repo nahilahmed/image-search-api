@@ -31,9 +31,9 @@ app.get("/", function(req, res){
                 };
                 arr.push(myjson);
             })
-            var arr2 = [{images: arr}];
-            //res.send(queryData.find(arr));
-            queryData.find(arr2, res);
+            //var arr2 = [{images: arr}];
+            res.send(arr);
+            //queryData.find(arr2, res);
             queryData.insert(q);
         } 
     });
