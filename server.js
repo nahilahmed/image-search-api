@@ -20,7 +20,7 @@ app.get("/", function(req, res){
     request({
         uri: url,
         method: "GET",
-        timeout: 10000,
+        timeout: 15000,
         followRedirect: true,
         maxRedirects: 10},
     function(error, response, body){
@@ -28,18 +28,18 @@ app.get("/", function(req, res){
             var arr = [];
             var items = JSON.parse(body).items;
             
-            items.forEach(function(item, ind){
+            items.forEach(function(item){
                 var myjson = {
-                    imgURL : item.link,
-                    alt: item.snippet,
-                    thumbnail: item.image.thumbnailLink,
-                    contextLink: item.image.contextLink
+                    "imgURL" : item.link,
+                    "alt": item.snippet,
+                    "thumbnail": item.image.thumbnailLink,
+                    "contextLink": item.image.contextLink
                 };
                 arr.push(myjson);
-            })
-            var arr2 = [{images: arr}];
-            //res.send(arr);
-            queryData.find(arr2, res);
+            });
+            //var arr2 = [{images: arr}];
+            res.send(arr);
+            //queryData.find(arr2, res);
             queryData.insert(q);
         } 
     });

@@ -19,7 +19,7 @@ queryData.insert = function(q){
 };
 
 // finds a query responds with the api in json format
-queryData.find = function(ar, response){
+/**queryData.find = function(ar, response){
  MongoClient.connect(process.env.MONGODB_URI, function(err, db){
         if(err){throw err}
         else{
@@ -53,6 +53,6 @@ queryData.find = function(ar, response){
         
         db.close();
     });
-}
+}**/
 
 module.exports = queryData;
