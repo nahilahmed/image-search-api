@@ -1,11 +1,12 @@
 var express =require("express");
 var MongoClient = require("mongodb").MongoClient;
+var MONGODB_URI=process.env.MONGODB_URI;
 
 var queryData = {};
 
 // inserts a query to the database
 queryData.insert = function(q){
-    MongoClient.connect(process.env.MONGODB_URI, function(err, db){
+    MongoClient.connect(MONGODB_URI, function(err, db){
         if(err){throw err}
         else{
             var collection = db.collection("image_Queries");
@@ -19,8 +20,8 @@ queryData.insert = function(q){
 };
 
 // finds a query responds with the api in json format
-/**queryData.find = function(ar, response){
- MongoClient.connect(process.env.MONGODB_URI, function(err, db){
+queryData.find = function(ar, response){
+ MongoClient.connect(MONGODB_URI, function(err, db){
         if(err){throw err}
         else{
             var collection2 = db.collection("image_Queries");
@@ -53,6 +54,6 @@ queryData.insert = function(q){
         
         db.close();
     });
-}**/
+}
 
 module.exports = queryData;
