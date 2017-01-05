@@ -37,6 +37,9 @@ app.get("/", function(req, res){
     
     if (q){
         var start = req.query.offset || 1;
+        if(start <=0){
+            res.send("offset can only be an integer from 1 upwards!");
+        }
     request.get("https://www.googleapis.com/customsearch/v1?key=" + google_key + "&cx=" + google_cx + "&searchType=image&q=" + q + "&start=" + start, 
     function(error, response, body){
         if (!error && response.statusCode == 200){ 
