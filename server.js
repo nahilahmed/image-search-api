@@ -8,6 +8,16 @@ if (cluster.isMaster){
     for (var i = 0; i < cpuCount; i += 1) {
         cluster.fork();
     }
+    
+    // Listen for dying workers
+cluster.on('exit', function (worker) {
+
+    // Replace the dead worker,
+    // we're not sentimental
+    console.log('Worker %d died :(', worker.id);
+    cluster.fork();
+
+});
 
 // Code to run if we're in a worker process
 }
@@ -24,8 +34,9 @@ app.get("/", function(req, res){
     var MONGODB_URI=process.env.MONGODB_URI;
     var google_cx=process.env.google_cx;
     var google_key=process.env.google_key;
+    
     if (q){
-        var start = req.query.offset || 0;
+        var start = req.query.offset || 1;
     request.get("https://www.googleapis.com/customsearch/v1?key=" + google_key + "&cx=" + google_cx + "&searchType=image&q=" + q + "&start=" + start, 
     function(error, response, body){
         if (!error && response.statusCode == 200){ 
@@ -45,7 +56,10 @@ app.get("/", function(req, res){
             //res.send(queryData.find(arr));
             queryData.find(arr2, res);
             queryData.insert(q);
-        } 
+        }
+        else{
+            res.end(error);
+        }
     });
     }
     else{
